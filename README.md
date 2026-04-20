@@ -1,24 +1,10 @@
 # safecopy
 
-Amiga X-Copy inspired file copy tool with MD5 verification and a retro block display. Built for slow or unreliable targets like Samba shares and USB disks.
+File copy tool with MD5 verification and chunk-level progress. Built for slow or unreliable targets like Samba shares and USB disks.
 
 ```
---- SAFE-COPY V1.0 (X-COPY MODE) ---
-------------------------------------------------------------------------
-  ■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
-  □□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
-  ...
-------------------------------------------------------------------------
- File : Music/Tony Anderson - Tenderness.mp3
- Speed:   0.21 MB/s  |  Progress:  24.3%
- State: Copying...
+     513/8193    0.85 MB/s    6.3%  Her Şey Çok Güzel Olacak.webm
 ```
-
-**Block states:**
-- Blue `■` — copying
-- Yellow `■` — verifying (MD5)
-- Green `■` — verified OK
-- Red `■` — error
 
 ## Installation
 
@@ -43,7 +29,7 @@ safecopy file1.mp3 file2.mp3 dir/ /Volumes/backup/
 # Move (delete source after verified copy)
 safecopy --move ~/Photos/ /Volumes/backup/Photos/
 
-# Custom chunk size (default: 1mb)
+# Custom chunk size (default: 4mb)
 safecopy --chunk-size 8mb ~/Music/ /Volumes/backup/
 safecopy --chunk-size 256kb ~/Music/ /Volumes/backup/
 ```
@@ -61,7 +47,7 @@ safecopy --chunk-size 256kb ~/Music/ /Volumes/backup/
 1. Copies each file in chunks
 2. Computes MD5 of the source during copy
 3. Reads back the destination and computes its MD5
-4. Marks green on match, red on mismatch
+4. Reports failure if checksums don't match
 5. With `--move`, deletes source only after verified match
 
 ## Development
