@@ -1,0 +1,20 @@
+[project]
+name = "safecopy"
+version = "0.1.0"
+description = "Samba-safe file copier with MD5 verification and chunked transfer"
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+safecopy = "safecopy:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "hatchling>=1.27.0",
+    "pyinstaller>=6.19.0",
+    "pytest>=8.3.5",
+]

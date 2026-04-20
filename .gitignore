@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+*.spec
+
+# pytest
+.pytest_cache/
+
+# uv
+.python-version
