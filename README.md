@@ -44,7 +44,7 @@ safecopy file1.mp3 file2.mp3 dir/ /Volumes/backup/
 safecopy --move ~/Photos/ /Volumes/backup/Photos/
 
 # Custom chunk size (default: 1mb)
-safecopy --chunk-size 4mb ~/Music/ /Volumes/backup/
+safecopy --chunk-size 8mb ~/Music/ /Volumes/backup/
 safecopy --chunk-size 256kb ~/Music/ /Volumes/backup/
 ```
 
@@ -53,7 +53,7 @@ safecopy --chunk-size 256kb ~/Music/ /Volumes/backup/
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--move` | off | Delete source after successful copy |
-| `--chunk-size` | `1mb` | Transfer chunk size (e.g. `512kb`, `4mb`) |
+| `--chunk-size` | `4mb` | Transfer chunk size (e.g. `512kb`, `4mb`) |
 | `--pause` | `0` | Seconds to wait between chunks |
 
 ## How it works
