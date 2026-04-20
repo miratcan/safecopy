@@ -17,4 +17,14 @@ dev = [
     "hatchling>=1.27.0",
     "pyinstaller>=6.19.0",
     "pytest>=8.3.5",
+    "ruff>=0.15.11",
 ]
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+select = ["E", "F", "C90"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
