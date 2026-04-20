@@ -9,7 +9,6 @@ import os
 import sys
 import time
 import shutil
-import signal
 from pathlib import Path
 
 # ANSI colors
@@ -28,12 +27,6 @@ C_SHOW_CURSOR = "\033[?25h"
 BLOCK_FULL  = "\u25A0"  # ■ filled
 BLOCK_EMPTY = "\u25A1"  # □ empty
 
-def signal_handler(sig, frame):
-    sys.stdout.write(C_SHOW_CURSOR + C_RESET + "\n")
-    print(f"\n{C_RED}Interrupted.{C_RESET}")
-    os._exit(1)
-
-signal.signal(signal.SIGINT, signal_handler)
 
 class XCopyVisualizer:
     def __init__(self, total_bytes):
@@ -270,5 +263,11 @@ def main():
     sys.stdout.write(C_SHOW_CURSOR + "\n")
     print("\n\nDone.")
 
+
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.stdout.write(C_SHOW_CURSOR + C_RESET + "\n")
+        print(f"\n{C_RED}Interrupted.{C_RESET}")
+        sys.exit(1)
